@@ -1,6 +1,7 @@
 <nav class="nav">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" href="{{ url_for('home') }}">Active</a>
+    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
     <a class="nav-link" href="#">Link</a>
-    <a class="nav-link" href="#">Link</a>
+    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Login</a>
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 </nav>
