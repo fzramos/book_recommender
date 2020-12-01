@@ -2,3 +2,5 @@
 k.txt
 files/books.csv
 .env
+.vscode/*
+**/__pycache__/**
