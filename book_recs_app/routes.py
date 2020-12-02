@@ -8,17 +8,10 @@ from book_recs_app.models import User, FavBook, check_password_hash
 def home():
     # TODO username or email login in 1 line
     login_form = LoginForm()
-    print(10)
-    if request.method == 'POST':
-        print('method worked')
-    if login_form.validate():
-        print('validated')
     if request.method == 'POST' and login_form.validate():
-        print(1)
         username = login_form.username.data
         password = login_form.password.data
         logged_user = User.query.filter(User.username == username).first()
-        print(0)
         if logged_user and check_password_hash(logged_user.password, password):
             login_user(logged_user)
             # todo remove modal or make modal say 'Logged In'
@@ -48,6 +41,11 @@ def register():
         # if user registers they are logged in
         return redirect(url_for('home'))
     return render_template('register.html', form = form)
+
+@app.route('/search')
+def search():
+    
+    return render_template('search.html')
 
 @app.route('/logout')
 @login_required

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Search for books</h1>
+    </div>
+    <div class="col-md-4 col-xl-2">
+        <button type="button" class="btn btn-secondary" onclick="searchGenre()">Secondary</button>
+        <form action="" onsubmit="getBooks()" class="bd-search d-flex align-items-center" role="search">
+            <span style="position: relative; display: inline-block; direction: ltr;">
+                <input id="search-input" 
+                    type="search" 
+                    class="form-control ds-input"
+                    placeholder="Search..."
+                    aria-label="Search for..."
+                    spellcheck="false"
+                    role="combobox"
+                    aria-expanded="false"
+                    style="position: relative; vertical-align: top;"
+                    dir="auto">
+            </span>
+            
+        </form>
+    </div>
+
+{% endblock %}
