@@ -1,6 +1,6 @@
 from book_recs_app import app, db
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required, login_user, current_user, login_user
+from flask_login import login_required, login_user, current_user, logout_user
 from book_recs_app.forms import UserForm, LoginForm
 from book_recs_app.models import User, FavBook, check_password_hash
 
@@ -8,17 +8,25 @@ from book_recs_app.models import User, FavBook, check_password_hash
 def home():
     # TODO username or email login in 1 line
     login_form = LoginForm()
+    print(10)
+    if request.method == 'POST':
+        print('method worked')
+    if login_form.validate():
+        print('validated')
     if request.method == 'POST' and login_form.validate():
-        username = login_form.email.data
+        print(1)
+        username = login_form.username.data
         password = login_form.password.data
         logged_user = User.query.filter(User.username == username).first()
-        if logged_user and checked_passsword_hash(logged_user.password, password):
+        print(0)
+        if logged_user and check_password_hash(logged_user.password, password):
             login_user(logged_user)
             # todo remove modal or make modal say 'Logged In'
             return redirect(url_for('home'))
         else:
             # todo modal saying log in failed, try again
             pass
+        return redirect(url_for('home'))
     return render_template('home.html', login_form = login_form)
 
 # @app.route('/register')
@@ -38,7 +46,7 @@ def register():
         db.session.commit()
 
         # if user registers they are logged in
-
+        return redirect(url_for('home'))
     return render_template('register.html', form = form)
 
 @app.route('/logout')
