@@ -49,12 +49,40 @@ const addBookCard = (items) => {
         if (book_cards[i].hasAttribute("hidden")) {
             book_cards[i].removeAttribute('hidden');
             var book_info = book_cards[i].firstElementChild.firstElementChild.childNodes;
-            // 
-            book_info[1].innerHTML = items.volumeInfo.title;
-            book_info[3].href = items.volumeInfo.previewLink;
-            book_info[3].firstElementChild.src = items.volumeInfo.imageLinks.thumbnail;
-            book_info[5].innerHTML = items.volumeInfo.authors[0];
-            book_info[9].href = items.volumeInfo.imageLinks.thumbnail;
+            
+            if ('title' in items.volumeInfo) {
+                book_info[1].innerHTML = items.volumeInfo.title;
+            } else {
+                book_info[1].innerHTML = 'Unknown Title'
+            }
+
+            if ('previewLink' in items.volumeInfo) {
+                book_info[3].href = items.volumeInfo.previewLink;
+                book_info[9].href = items.volumeInfo.previewLink;
+            } else {
+                book_info[3].href = alert('Sorry, preview is not working.');
+                book_info[9].href = alert('Sorry, preview is not working.');
+            }
+
+            if ('imageLinks' in items.volumeInfo) {
+                book_info[3].firstElementChild.src = items.volumeInfo.imageLinks.thumbnail;
+            } else {
+                book_info[3].firstElementChild.src = "url('../static/images/dark_default_cover_small.png')";
+            }
+
+            if ('authors' in items.volumeInfo) {
+                book_info[5].innerHTML = items.volumeInfo.authors[0];
+            } else {
+                book_info[5].innerHTML = 'Author Unknown'
+            }
+            
+            // book_info[1].innerHTML = items.volumeInfo.title;
+            // book_info[3].href = items.volumeInfo.previewLink;
+            // book_info[3].firstElementChild.src = items.volumeInfo.imageLinks.thumbnail;
+            // book_info[5].innerHTML = items.volumeInfo.authors[0];
+
+            // book_info[9].href = items.volumeInfo.previewLink;
+            
             // book_info[2].innerHTML = items.volumeInfo.description;
             // save for later
             break

@@ -12,7 +12,7 @@
     {% endif %}
 
     <!-- modal login form -->
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <!-- <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
     <div class="modal-dialog text-dark" role="document">
         <div class="modal-content">
@@ -24,23 +24,23 @@
             </div>
         <div class="modal-body mx-3">
             <form method="POST">
-                {{ login_form.hidden_tag() }}
+                 login_form.hidden_tag() 
                 <div class="form-group">
                     <fieldset>
-                        {{ login_form.username.label }}
-                        {{ login_form.username(class="form-control", placeholder = "Add Username")}}
+                         login_form.username.label 
+                         login_form.username(class="form-control", placeholder = "Add Username")
                     </fieldset>
                     <fieldset>
-                        {{ login_form.password.label }}
-                        {{ login_form.password(class="form-control", placeholder = "Add password")}}
+                         login_form.password.label 
+                         login_form.password(class="form-control", placeholder = "Add password")
                     </fieldset>
                     <div class="modal-footer d-flex justify-content-center">
-                        {{ login_form.submit(class="btn btn-success")}}
+                         login_form.submit(class="btn btn-success")
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    </div>
+    </div> -->
 
 {% endblock %}
