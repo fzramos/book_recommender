@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if not current_user.is_authenticated %}
+    <h1>Register or login to create a list</h1>
+    {% else %}
+    <h1>Here's your list</h1>
+    {% endif %}
+    
+{% endblock content %}

@@ -1,45 +1,116 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center">
-    <h1>Search for books</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <h1>Search for Books</h1>
     </div>
-    <div class="col-md-4 col-xl-2">
-        <button type="button" class="btn btn-secondary" onclick="searchGenre()">Secondary</button>
-        <form action="" onsubmit="event.preventDefault(); bookInfoHelper()" class="bd-search d-flex align-items-center" role="search">
-            <span style="position: relative; display: inline-block; direction: ltr;">
+    <form action="" onsubmit="event.preventDefault(); bookInfoHelper()"role="search"> 
+        <!-- class="bd-search d-flex align-items-center"  -->
+        <div class="row justify-content-center m-1">
+            <div class="col-md-5">
                 <input id="search-input" 
-                    type="search" 
-                    class="form-control ds-input"
-                    placeholder="Search..."
-                    aria-label="Search for..."
-                    spellcheck="false"
-                    role="combobox"
-                    aria-expanded="false"
-                    style="position: relative; vertical-align: top;"
-                    dir="auto">
-            </span>
-            
-        </form>
-    </div>
+                type="search" 
+                class="form-control ds-input"
+                placeholder="Search..."
+                aria-label="Search for..."
+                spellcheck="false"
+                role="combobox"
+                aria-expanded="false"
+                style="position: relative; vertical-align: top;"
+                dir="auto">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-secondary" onclick="searchGenre()">Search by Genre</button>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-primary" onclick="bookInfoHelper()">Search</button>
+            </div>
+        </div>
+    </form>
 
-    <!-- <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-4">
-              <h1>A</h1>
-            </div>
-            <div class="col-4">
-                <h1>B</h1>
-            </div>
-          </div>
-    </div> -->
+
     <div class="mx-auto" style="width: 50%;">
-        <div class="row">
-            <div class="col-md-6">col</div>
-            <div class="col-md-6">col</div>
-            <div class="col-md-6">col</div>
-            <div class="col-md-6">col</div>
+        <div class="row" id="book-card-grid">
+            <div class="col-md-6 book-card" hidden>
+                <div class="card text-white bg-secondary ">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Book Title</h5>
+                        <a href="#" target="_blank">
+                            <img
+                                src="https://books.google.com/books/content?id=iO5pApw2JycC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                                alt="Book Cover"
+                                class="bookCover mr-3 mb-3"
+                                style="float:left;" 
+                            >
+                        </a>
+                        <h6 class="card-title">Author Title</h6>
+                        <!-- <p class="card-text">Book Description</p> -->
+                        <a href="#" target="_blank" class="btn btn-primary">Book Preview</a>
+                        <a href="#" target="_blank" class="btn btn-success" style="display: inline-block;">Add to List</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 book-card" hidden>
+                <div class="card text-white bg-secondary ">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Book Title</h5>
+                        <a href="#" target="_blank">
+                            <img
+                                src="https://books.google.com/books/content?id=iO5pApw2JycC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                                alt="Book Cover"
+                                class="bookCover mr-3 mb-3"
+                                style="float:left;" 
+                            >
+                        </a>
+                        <h6 class="card-title">Author Title</h6>
+                        <!-- <p class="card-text">Book Description</p> -->
+                        <a href="#" target="_blank" class="btn btn-primary" style="display: inline-block;">Book Preview</a>
+                        <a href="#" target="_blank" class="btn btn-success" style="display: inline-block;">Add to List</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 book-card" hidden>
+                <div class="card text-white bg-secondary ">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Book Title</h5>
+                        <a href="#" target="_blank">
+                            <img
+                                src="https://books.google.com/books/content?id=iO5pApw2JycC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                                alt="Book Cover"
+                                class="bookCover mr-3 mb-3"
+                                style="float:left;" 
+                            >
+                        </a>
+                        <h6 class="card-title">Author Title</h6>
+                        <!-- <p class="card-text">Book Description</p> -->
+                        <a href="#" target="_blank" class="btn btn-primary">Book Preview</a>
+                        <a href="#" target="_blank" class="btn btn-success" style="display: inline-block;">Add to List</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 book-card" hidden>
+                <div class="card text-white bg-secondary ">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Book Title</h5>
+                        <a href="#" target="_blank">
+                            <img
+                                src="https://books.google.com/books/content?id=iO5pApw2JycC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                                alt="Book Cover"
+                                class="bookCover mr-3 mb-3"
+                                style="float:left;" 
+                            >
+                        </a>
+                        <h6 class="card-title">Author Title</h6>
+                        <!-- <p class="card-text">Book Description</p> -->
+                        <a href="#" target="_blank" class="btn btn-primary">Book Preview</a>
+                        <a href="#" target="_blank" class="btn btn-success" style="display: inline-block;">Add to List</a>
+                    </div>
+                </div>
+            </div>
+            
+            
         </div>
     </div>
-
 {% endblock %}

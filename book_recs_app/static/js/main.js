@@ -4,28 +4,32 @@
 // Search page functions
 const bookInfoHelper = async () => {
     let search_text = document.getElementById('search-input').value;
-    alert(`The form was submitted with the value: ${search_text}`);
+    // reseting book card grid for new results
+    const book_cards = document.querySelectorAll('.book-card');
+    book_cards.forEach(card => {
+        if (!card.hasAttribute("hidden")) {
+            card.setAttribute('hidden', 'True');
+        }
+    })
 
-    // will get this 
+    
     const rawResults = await getBooksInfo(search_text)
     if (rawResults.totalItems == 0) {
         // TODO make this show message to user saying try again
         console.log('No results')
     } else {
         rawResults.items.forEach(i => {
-            console.log(i.volumeInfo.title)
+            // console.log(i.volumeInfo.title)
+            // TODO append results to search page with function
+            addBookCard(i)
         })
     }
-    
     console.log(rawResults)
-
-    
-
 }
 
 async function getBooksInfo(book) {
     // TODO set max to more
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${book}&maxResults=1`);
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${book}&maxResults=4`);
     const data = await response.json();
     return data;
 }
@@ -33,5 +37,28 @@ async function getBooksInfo(book) {
 const searchGenre = () => {
     document.getElementById('search-input').value = 'subject:' + document.getElementById('search-input').value;
     document.getElementById('search-input').focus();
+
+}
+
+const addBookCard = (items) => {
+    console.log(items.volumeInfo.title)
+
+    const book_cards = document.querySelectorAll('.book-card');
+
+    for (let i = 0; i < book_cards.length; i++) {
+        if (book_cards[i].hasAttribute("hidden")) {
+            book_cards[i].removeAttribute('hidden');
+            var book_info = book_cards[i].firstElementChild.firstElementChild.childNodes;
+            // 
+            book_info[1].innerHTML = items.volumeInfo.title;
+            book_info[3].href = items.volumeInfo.previewLink;
+            book_info[3].firstElementChild.src = items.volumeInfo.imageLinks.thumbnail;
+            book_info[5].innerHTML = items.volumeInfo.authors[0];
+            book_info[9].href = items.volumeInfo.imageLinks.thumbnail;
+            // book_info[2].innerHTML = items.volumeInfo.description;
+            // save for later
+            break
+        }
+    }
 
 }

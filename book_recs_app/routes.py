@@ -52,3 +52,7 @@ def search():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+@app.route('/list')
+def user_list():
+    return render_template('user_list.html')
