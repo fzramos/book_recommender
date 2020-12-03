@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-4 col-xl-2">
         <button type="button" class="btn btn-secondary" onclick="searchGenre()">Secondary</button>
-        <form action="" onsubmit="getBooks()" class="bd-search d-flex align-items-center" role="search">
+        <form action="" onsubmit="event.preventDefault(); bookInfoHelper()" class="bd-search d-flex align-items-center" role="search">
             <span style="position: relative; display: inline-block; direction: ltr;">
                 <input id="search-input" 
                     type="search" 
@@ -21,6 +21,25 @@
             </span>
             
         </form>
+    </div>
+
+    <!-- <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+              <h1>A</h1>
+            </div>
+            <div class="col-4">
+                <h1>B</h1>
+            </div>
+          </div>
+    </div> -->
+    <div class="mx-auto" style="width: 50%;">
+        <div class="row">
+            <div class="col-md-6">col</div>
+            <div class="col-md-6">col</div>
+            <div class="col-md-6">col</div>
+            <div class="col-md-6">col</div>
+        </div>
     </div>
 
 {% endblock %}
