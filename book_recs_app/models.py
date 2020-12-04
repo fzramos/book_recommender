@@ -50,6 +50,7 @@ class BookDetails(db.Model):
 
     # no init, repr because this should be a read only table
 
+# TODO Add Data to this Model
 class FavBook(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     isbn13 = db.Column(db.String(13))
@@ -61,27 +62,3 @@ class FavBook(db.Model):
     
     def __repr__(self):
         return f'New book added to User {self.user_id} favorites list with isbn13: {self.isbn13}.'
-
-
-
-# Obsolete FavBook, choosing to only dbve book_detail table id to favbook
-# class FavBook(db.Model):
-#     id = db.Column(db.Integer, primary_key = True)
-#     title = db.Column(db.String(100))
-#     author =  db.Column(db.String(100))
-#     cover = db.Column(db.String(100))
-#     description = db.Column(db.String(300))
-#     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
-
-#     def __init__(self, title, author, cover, description, user_id):
-#         self.title = title
-#         self.author = author
-#         self.cover = cover
-#         self.description = description
-#         self.user_id = user_id
-    
-#     def __repr__(self):
-#         return 'New book added to favorites list with isbn13: {self.isbn} by {self.author}.'
-
-

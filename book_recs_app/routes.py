@@ -93,7 +93,7 @@ def login():
         else:
             # todo modal saying log in failed, try again
             pass
-    return render_template('login.html', form = form)
+    return render_template('login.html', login_form = form)
 
 @app.route('/search')
 def search():
@@ -108,6 +108,14 @@ def logout():
 
 @app.route('/list')
 def user_list():
+
+    if current_user.is_authenticated:
+        # logged_user = User.query.filter(User.id == username).first()
+        user_isbns = db.session.query(
+            FavBook.isbn13
+            ).filter(FavBook.user_id == current_user.id
+            ).all()
+        return render_template('user_list.html', user_isbns = user_isbns)
     return render_template('user_list.html')
 
 # @app.route('/recommendation')

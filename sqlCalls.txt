@@ -72,3 +72,10 @@ Trying to get random values out of the Py list passed to Template Recommendation
 
     <h1>lots of results</h1>
     {% endif %}
+
+
+Current user list query
+user_isbns = db.session.query(
+    FavBook.isbn13
+    ).filter(FavBook.user_id == 8
+    ).all()

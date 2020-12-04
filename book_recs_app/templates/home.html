@@ -1,15 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- <div class="text-center">
-    <butttoon class="btn btn-primary">Fill out the survey:</butttoon>
-</div>
-    <h1>Hello World</h1> -->
-
-    {% if current_user.is_authenticated %}
-    <h1 id = 'test'>asdf</h1>
-    {% endif %}
-
 
     <!-- Slider stuff -->
     <!-- <div class="noUi-base">
@@ -22,45 +13,6 @@
         </div>
     </div> -->
 
-
-    
-
-    <!-- <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 m-1">
-                <h1>Discover your next favorite Book!</h1>
-                <butttoon class="btn btn-primary" onclick="toggleSurvey()">Fill out the survey:</butttoon>
-            </div>
-        </div>
-        <div class="row justify-content-center m-1" id="survey" hidden>
-            <div class="col-md-5">
-                <form method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="form-group">
-                        <fieldset>
-                            
-                            {{ form.min_rating.label }}
-                            {{ form.min_rating(class="")}}
-                        </fieldset>
-                        <fieldset>
-                            {{ form.book_length.label }}
-                            {{ form.book_length(class="radio")}}
-                        </fieldset>
-                        <fieldset>
-                            {{ form.popularity.label }}
-                            {{ form.popularity(class="radio")}}
-                        </fieldset>
-                        <fieldset>
-                            {{ form.pub_year.label }}
-                            {{ form.pub_year(class="radio")}}
-                        </fieldset>
-                        {{ form.submit(class="btn btn-success")}}
-                    </div>
-                </form>
-            </div>      
-        </div>
-    </div> -->
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 m-1">
@@ -69,35 +21,6 @@
             </div>
         </div>
     </div>
-        <!-- <div class="row justify-content-center m-1" id="survey" hidden>
-            <div class="col-md-5">
-                <form method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="form-group">
-                        <fieldset>
-
-                            {{ form.min_rating.label }}
-                            {{ form.min_rating(class="")}}
-                        </fieldset>
-
-                        <fieldset>
-                            {{ form.book_length.label }}
-                            {{ form.book_length(class="radio")}}
-                        </fieldset>
-                        <fieldset>
-                            {{ form.popularity.label }}
-                            {{ form.popularity(class="radio")}}
-                        </fieldset>
-                        <fieldset>
-                            {{ form.pub_year.label }}
-                            {{ form.pub_year(class="radio")}}
-                        </fieldset>
-                        {{ form.submit(class="btn btn-success")}}
-                    </div>
-                </form>
-            </div>      
-        </div>
-    </div> -->
     
     <div class="container">
         <form method="POST">
