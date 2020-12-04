@@ -1,0 +1,74 @@
+page range
+matching_books = db.session.query(
+    BookDetails.isbn13
+    ).filter(BookDetails.num_pages > 0
+    ).filter(BookDetails.num_pages > 224
+    ).order_by(BookDetails.average_rating
+    ).limit(200).all()
+for randomized:
+matching_books = db.session.query(
+    BookDetails.isbn13
+    ).filter(BookDetails.num_pages > 0
+    ).filter(BookDetails.num_pages < 224
+    ).limit(200).all()
+
+popularity range
+matching_books = db.session.query(
+    BookDetails.isbn13
+    ).filter(BookDetails.ratings_count > 0
+    ).filter(BookDetails.ratings_count < 200
+    ).limit(200).all()
+
+rating min
+matching_books = db.session.query(
+    BookDetails.isbn13
+    ).filter(BookDetails.average_rating > 3.5
+    ).limit(200).all()
+
+year range
+matching_books = db.session.query(
+    BookDetails.isbn13
+    ).filter(BookDetails.publication_date > '1-1-1919'
+    ).filter(BookDetails.publication_date < '12-3-1997'
+    ).limit(200).all()
+
+working combined function
+db.session.query(
+...     BookDetails.isbn13
+...     ).filter(BookDetails.num_pages > 0
+...     ).filter(BookDetails.num_pages < 224
+...     ).filter(BookDetails.ratings_count > 0
+...     ).filter(BookDetails.ratings_count < 200
+...     ).filter(BookDetails.average_rating > 3.5
+...     ).filter(BookDetails.publication_date > '1-1-1919'
+...     ).filter(BookDetails.publication_date < '12-3-1997'
+...     ).limit(200).all()
+
+Combined sqlalchemy ready for use
+matching_books = db.session.query(
+    BookDetails.isbn13
+    ).filter(BookDetails.num_pages > page_range[0]
+    ).filter(BookDetails.num_pages < page_range[1]
+    ).filter(BookDetails.ratings_count > pop_range[0]
+    ).filter(BookDetails.ratings_count < pop_range[1]
+    ).filter(BookDetails.average_rating > min_rating
+    ).filter(BookDetails.publication_date > year_range[0]
+    ).filter(BookDetails.publication_date < year_range[1]
+    ).limit(200).all()
+
+
+Trying to get random values out of the Py list passed to Template Recommendations
+    {% if isbns|length < 1 %}
+    <h1>Sorry, no books fit those criteria, please try again.</h1>
+    {% elif isbns|length < 5 %}
+    <h1>some results</h1>
+        {% for i in sample(isbns, isbns|length) %}
+            <h1>{{ i[0] }}</h1>
+        {% endfor %}
+    {% else %}
+        {% for i in sample(isbns, 5) %}
+            <h1>{{ i[0] }}</h1>
+        {% endfor %}
+
+    <h1>lots of results</h1>
+    {% endif %}

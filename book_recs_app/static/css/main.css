@@ -5,3 +5,7 @@ nav {
 #ex1Slider .slider-selection {
 	background: #BABABA;
 }
+
+ul {
+    list-style-type: none;
+}

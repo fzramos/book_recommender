@@ -20,15 +20,15 @@ class PreferenceForm(FlaskForm):
     # max_rating = DecimalField('Maximum Rating', validators = [DataRequired()])
     book_length = RadioField(
         'Length of Book', 
-        choices = ['Short(0-200 pages)', 'Intermediate(200-2000 pages)', 'Long(2000+)', 'Any'],
+        choices = ['Short', 'Intermediate', 'Long', 'Any'],
         validators = [DataRequired()]
     )
     popularity = RadioField(
         'Book Popularity', 
-        choices = ['Little Known', 'Popular', 'Very Well-Known'],
+        choices = ['Little Known', 'Popular', 'Very Well-Known', 'Any'],
         validators = [DataRequired()]
     )
     pub_year = RadioField('Publication Year',
-        choices = ['Pre-1997', '1998-2002', '2003-2005', 'Post-2006'])
+        choices = ['Pre-1997', '1998-2002', '2003-2005', 'Post-2005', 'Any'])
     # pub_year = IntegerField('Publication Year', validators = [DataRequired()])
     submit = SubmitField()

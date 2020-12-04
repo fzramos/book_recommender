@@ -1,6 +1,5 @@
 from book_recs_app import app, db, login_manager
 
-
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from datetime import datetime

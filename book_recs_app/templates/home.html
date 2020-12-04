@@ -21,9 +21,11 @@
             </div>
         </div>
     </div> -->
+
+
     
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 m-1">
                 <h1>Discover your next favorite Book!</h1>
@@ -36,7 +38,7 @@
                     {{ form.hidden_tag() }}
                     <div class="form-group">
                         <fieldset>
-                            <div id="slider"></div>
+                            
                             {{ form.min_rating.label }}
                             {{ form.min_rating(class="")}}
                         </fieldset>
@@ -57,6 +59,74 @@
                 </form>
             </div>      
         </div>
+    </div> -->
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 m-1">
+                <h1>Discover your next favorite Book!</h1>
+                <butttoon class="btn btn-primary" onclick="toggleSurvey()">Fill out the survey:</butttoon>
+            </div>
+        </div>
+    </div>
+        <!-- <div class="row justify-content-center m-1" id="survey" hidden>
+            <div class="col-md-5">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <fieldset>
+
+                            {{ form.min_rating.label }}
+                            {{ form.min_rating(class="")}}
+                        </fieldset>
+
+                        <fieldset>
+                            {{ form.book_length.label }}
+                            {{ form.book_length(class="radio")}}
+                        </fieldset>
+                        <fieldset>
+                            {{ form.popularity.label }}
+                            {{ form.popularity(class="radio")}}
+                        </fieldset>
+                        <fieldset>
+                            {{ form.pub_year.label }}
+                            {{ form.pub_year(class="radio")}}
+                        </fieldset>
+                        {{ form.submit(class="btn btn-success")}}
+                    </div>
+                </form>
+            </div>      
+        </div>
+    </div> -->
+    
+    <div class="container">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-row justify-content-center">
+                <div class="form-group col-sm-2">
+                    {{ form.min_rating.label(class="")}}
+                    {{ form.min_rating(class="form-control")}}
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-2">
+                    {{ form.book_length.label }}
+                    {{ form.book_length(class="radio")}}
+                </div>
+                <div class="form-group col-md-2">
+                    {{ form.popularity.label }}
+                    {{ form.popularity(class="radio")}}
+                </div>
+                <div class="form-group col-md-2">
+                    {{ form.pub_year.label }}
+                    {{ form.pub_year(class="radio")}}
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                {{ form.submit(class="btn btn-success")}}
+            </div>
+        </form>
+    </div>
     
 
     <!-- modal login form -->
