@@ -1,15 +1,63 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center">
-    <h1>Discover your next favorite Book!</h1>
+<!-- <div class="text-center">
     <butttoon class="btn btn-primary">Fill out the survey:</butttoon>
 </div>
-    <h1>Hello World</h1>
+    <h1>Hello World</h1> -->
 
     {% if current_user.is_authenticated %}
-    <h1>asdf</h1>
+    <h1 id = 'test'>asdf</h1>
     {% endif %}
+
+
+    <!-- Slider stuff -->
+    <!-- <div class="noUi-base">
+        <div class="noUi-connects">
+            <div class="noUi-connect" style="transform: translate(20%) scale(0.6, 1);"></div></div><div class="noUi-origin" style="transform: translate(-800%); z-index: 5;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="80.0" aria-valuenow="20.0" aria-valuetext="20.00"><div class="noUi-touch-area"></div></div></div><div class="noUi-origin" style="transform: translate(-200%); z-index: 4;"><div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="20.0" aria-valuemax="100.0" aria-valuenow="80.0" aria-valuetext="80.00">
+                <div class="noUi-touch-area">
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 m-1">
+                <h1>Discover your next favorite Book!</h1>
+                <butttoon class="btn btn-primary" onclick="toggleSurvey()">Fill out the survey:</butttoon>
+            </div>
+        </div>
+        <div class="row justify-content-center m-1" id="survey" hidden>
+            <div class="col-md-5">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <fieldset>
+                            <div id="slider"></div>
+                            {{ form.min_rating.label }}
+                            {{ form.min_rating(class="")}}
+                        </fieldset>
+                        <fieldset>
+                            {{ form.book_length.label }}
+                            {{ form.book_length(class="radio")}}
+                        </fieldset>
+                        <fieldset>
+                            {{ form.popularity.label }}
+                            {{ form.popularity(class="radio")}}
+                        </fieldset>
+                        <fieldset>
+                            {{ form.pub_year.label }}
+                            {{ form.pub_year(class="radio")}}
+                        </fieldset>
+                        {{ form.submit(class="btn btn-success")}}
+                    </div>
+                </form>
+            </div>      
+        </div>
+    
 
     <!-- modal login form -->
     <!-- <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -24,18 +72,18 @@
             </div>
         <div class="modal-body mx-3">
             <form method="POST">
-                 login_form.hidden_tag() 
+                 form.hidden_tag() 
                 <div class="form-group">
                     <fieldset>
-                         login_form.username.label 
-                         login_form.username(class="form-control", placeholder = "Add Username")
+                         form.username.label 
+                         form.username(class="form-control", placeholder = "Add Username")
                     </fieldset>
                     <fieldset>
-                         login_form.password.label 
-                         login_form.password(class="form-control", placeholder = "Add password")
+                         form.password.label 
+                         form.password(class="form-control", placeholder = "Add password")
                     </fieldset>
                     <div class="modal-footer d-flex justify-content-center">
-                         login_form.submit(class="btn btn-success")
+                         form.submit(class="btn btn-success")
                     </div>
                 </div>
             </form>

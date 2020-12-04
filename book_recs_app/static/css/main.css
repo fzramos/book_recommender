@@ -1,3 +1,7 @@
 nav {
     font-size: x-large;
 }
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}

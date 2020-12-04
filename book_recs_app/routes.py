@@ -1,26 +1,22 @@
 from book_recs_app import app, db
 from flask import render_template, request, redirect, url_for
 from flask_login import login_required, login_user, current_user, logout_user
-from book_recs_app.forms import UserForm, LoginForm
+from book_recs_app.forms import UserForm, LoginForm, PreferenceForm
 from book_recs_app.models import User, FavBook, check_password_hash
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
-    # TODO username or email login in 1 line
-    # login_form = LoginForm()
-    # if request.method == 'POST' and login_form.validate():
-    #     username = login_form.username.data
-    #     password = login_form.password.data
-    #     logged_user = User.query.filter(User.username == username).first()
-    #     if logged_user and check_password_hash(logged_user.password, password):
-    #         login_user(logged_user)
-    #         # todo remove modal or make modal say 'Logged In'
-    #         return redirect(url_for('home'))
-    #     else:
-    #         # todo modal saying log in failed, try again
-    #         pass
-    #     return redirect(url_for('home'))
-    return render_template('home.html')
+
+    form = PreferenceForm()
+    if request.method == 'POST' and form.validate():
+        min_rating = form.min_rating.data
+        # max_rating = form.max_rating.data
+        book_length = form.book_length.data 
+        popularity = form.popularity.data 
+        pub_year = form.pub_year.data 
+        
+
+    return render_template('home.html', form = form)
 
 # @app.route('/register')
 # def testRoute():
@@ -44,19 +40,20 @@ def register():
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
-    login_form = LoginForm()
-    if request.method == 'POST' and login_form.validate():
-        username = login_form.username.data
-        password = login_form.password.data
+    # TODO username or email login in 1 line
+    form = LoginForm()
+    if request.method == 'POST' and form.validate():
+        username = form.username.data
+        password = form.password.data
         logged_user = User.query.filter(User.username == username).first()
         if logged_user and check_password_hash(logged_user.password, password):
-            login_user(logged_user)
+            user(logged_user)
             # todo remove modal or make modal say 'Logged In'
             return redirect(url_for('home'))
         else:
             # todo modal saying log in failed, try again
             pass
-    return render_template('login.html', login_form = login_form)
+    return render_template('login.html', form = form)
 
 @app.route('/search')
 def search():
