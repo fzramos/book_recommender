@@ -2,20 +2,12 @@
 
 ## ChiCodes Final Project
 
-Goal is to build register/login/db integration for app
-COMPLETE
+Flask Web Application which recommend a book to a user based on their preferences.
 
+App uses a data set with 11000 rows of information about books.
 
-Also should have a tab for searching books/genres (maybe do this first to get api working)
-Use async await and fetch
-COMPLETE
+Google Books API is used to grab the thumbnails and external link to book previews.
 
-1. Need to clean up output cards for book info, some of the links don't work
-2. Add some error checking onto  card production
-2. Need User recommendation modal form ready
-3. integrating the csv using pandas.DataFrame.to_sql() into the database
-4. Getting sql list output for your list webpage
-Note: Users should be able to get book recs whether logged in or not
-But only be able to save books to their list if they are signed in
+App also allows registered users to save recommended or searched books to a personal reading list.
 
 
