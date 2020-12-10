@@ -1,0 +1,9 @@
+from book_recs_app import app, db
+from book_recs_app.models import User, BookDetails, FavBook
+
+user1 = User.query.filter_by(username = 'joel').first()
+book1 = User.query.filter_by(id = 1).first()
+db.session.add(FavBook(book1.isbn13, user1.id))
+db.session.commit()
+
+fav1 = FavBook.query.filter_by(id = 1).first()
